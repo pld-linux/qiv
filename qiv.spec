@@ -23,7 +23,7 @@ rotate left/right, delete (move to .qiv-trash/), jump to image x, jump
 forward/backward x images, filename filer and you can use qiv to set
 your X11-Desktop background.
 
-%description
+%description -l pl
 Quick Image Viewer (qiv) jest bardzo ma³ym i ca³kiem szybkim programem
 do przegl±dania plików graficznych, wykorzystuj±cym biblioteki GDK/Imlib.
 
