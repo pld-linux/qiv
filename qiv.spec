@@ -2,7 +2,7 @@ Summary:	Very fast image viewer for X-Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
 Name:		qiv
 Version:	1.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
@@ -13,7 +13,8 @@ BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_prefix		/usr/X11R6
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 Quick Image Viewer (qiv) is a very small and pretty fast GDK/Imlib
