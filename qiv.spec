@@ -1,8 +1,8 @@
 Summary:	Very fast image viewer for X Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
 Name:		qiv
-Version:	1.7
-Release:	2
+Version:	1.8
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
