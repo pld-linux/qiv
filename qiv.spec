@@ -6,9 +6,9 @@ Release: 	1
 Copyright: 	GPL
 Group: 		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
-URL: 		http://www.klografx.de/
 Source: 	http://www.klografx.de/software/files/%{name}-%{version}.tgz
 Patch: 		qiv-misc.patch
+URL: 		http://www.klografx.de/
 BuildRequires:	XFree86-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	glib-devel
