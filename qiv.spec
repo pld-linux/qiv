@@ -1,7 +1,7 @@
 Summary:	Very fast image viewer for X-Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
 Name:		qiv
-Version:	1.5
+Version:	1.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
 
-gzip -9nf README README.CHANGES README.TO-DO
+gzip -9nf README README.CHANGES README.TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
