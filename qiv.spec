@@ -1,14 +1,15 @@
 Summary:	Very fast image viewer for X-Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
 Name:		qiv
-Version:	1.3
-Release:	2
+Version:	1.5
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
+Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
-Source0:	http://www.klografx.de/software/files/%{name}-%{version}.tgz
-Patch0:		qiv-misc.patch
-URL:		http://www.klografx.de/software/qiv.shtml
+Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
+Patch0:		%{name}-misc.patch
+URL:		http://www.klografx.net/qiv/
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,23 +35,23 @@ GDK/Imlib.
 %patch -p1
 
 %build
-%{__make} OPTS="$RPM_OPT_FLAGS"
+%{__make} OPTS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT \
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
 
-gzip -9nf README Changes TO-DO
+gzip -9nf README README.CHANGES README.TO-DO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,Changes,TO-DO}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
