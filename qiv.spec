@@ -1,14 +1,14 @@
-Summary: 	Very fast image viewer for X-Window
+Summary:	Very fast image viewer for X-Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
-Name: 		qiv
-Version: 	1.2
-Release: 	1
-Copyright: 	GPL
-Group: 		X11/Applications/Graphics
+Name:		qiv
+Version:	1.3
+Release:	1
+License:	GPL
+Group:		X11/Applications/Graphics
 Group(pl):	X11/Aplikacje/Grafika
-Source: 	http://www.klografx.de/software/files/%{name}-%{version}.tgz
-Patch: 		qiv-misc.patch
-URL: 		http://www.klografx.de/
+Source0:	http://www.klografx.de/software/files/%{name}-%{version}.tgz
+Patch0:		qiv-misc.patch
+URL:		http://www.klografx.de/software/qiv.shtml
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -16,20 +16,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define	_prefix		/usr/X11R6
 
 %description
-Quick Image Viewer (qiv) is a very small and pretty fast GDK/Imlib image
-viewer. Features include zoom, maxpect, scale down, fullscreen,
-brightness/contrast/gamma correction, slideshow, flip horizontal/vertical,
-rotate left/right, delete (move to .qiv-trash/), jump to image x, jump
-forward/backward x images, filename filer and you can use qiv to set
-your X11-Desktop background.
+Quick Image Viewer (qiv) is a very small and pretty fast GDK/Imlib
+image viewer. Features include zoom, maxpect, scale down, fullscreen,
+brightness/contrast/gamma correction, slideshow, flip
+horizontal/vertical, rotate left/right, delete (move to .qiv-trash/),
+jump to image x, jump forward/backward x images, filename filer and
+you can use qiv to set your X11-Desktop background.
 
 %description -l pl
 Quick Image Viewer (qiv) jest bardzo ma³ym i ca³kiem szybkim programem
-do przegl±dania plików graficznych, wykorzystuj±cym biblioteki GDK/Imlib.
+do przegl±dania plików graficznych, wykorzystuj±cym biblioteki
+GDK/Imlib.
 
 %prep
 %setup -q
-%patch -p0
+%patch -p1
 
 %build
 make OPTS="$RPM_OPT_FLAGS"
