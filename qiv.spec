@@ -5,8 +5,6 @@ Version:	1.7
 Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
-Group(de):	X11/Applikationen/Grafik
-Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
