@@ -1,4 +1,4 @@
-Summary:	Very fast image viewer for X-Window
+Summary:	Very fast image viewer for X Window
 Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
 Name:		qiv
 Version:	1.7
@@ -8,6 +8,8 @@ Group:		X11/Applications/Graphics
 Group(de):	X11/Applikationen/Grafik
 Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
+Source1:	%{name}.desktop
+Source2:	%{name}.png
 Patch0:		%{name}-misc.patch
 URL:		http://www.klografx.net/qiv/
 BuildRequires:	gtk+-devel
@@ -39,11 +41,15 @@ GDK/Imlib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
+
+install %{SOURCE1} RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+install %{SOURCE2} RPM_BUILD_ROOT%{_pixmapsdir}
 
 gzip -9nf README README.CHANGES README.TODO
 
