@@ -9,10 +9,10 @@ Group(pl):	X11/Aplikacje/Grafika
 URL: 		http://www.klografx.de/
 Source: 	http://www.klografx.de/software/files/%{name}-%{version}.tgz
 Patch: 		qiv-misc.patch
-BuildPrereq:	XFree86-devel
-BuildPrereq:	gtk+-devel
-BuildPrereq:	glib-devel
-BuildPrereq:	imlib-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	glib-devel
+BuildRequires:	imlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define	_prefix		/usr/X11R6
