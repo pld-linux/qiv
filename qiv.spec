@@ -9,9 +9,7 @@ Group(pl):	X11/Aplikacje/Grafika
 Source: 	http://www.klografx.de/software/files/%{name}-%{version}.tgz
 Patch: 		qiv-misc.patch
 URL: 		http://www.klografx.de/
-BuildRequires:	XFree86-devel
 BuildRequires:	gtk+-devel
-BuildRequires:	glib-devel
 BuildRequires:	imlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
