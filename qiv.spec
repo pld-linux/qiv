@@ -54,20 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc {README,Changes}.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
-
-%changelog
-* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
-  [1.1-1]
-- updated to 1.1,
-- added using more rpm macros,
-- added using DESTDIR (qiv-misc.patch),
-- added pl translation,
-- simplifications in %install,
-- added BuildPrereq rules,
-- other minor changes,
-- package is FHS 2.0 compliant,
-
-* Sat Nov 21 1998 Maciej Lesniewski <nimir@kis.p.lodz.pl>
-  [1.0-1]
-- Initial release.
-- RPM_OPT patch.
