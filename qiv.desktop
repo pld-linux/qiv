@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Qiv
-Comment=Very fast image viewer for X Window
-Comment[pl]=Bardzo szybka przeglądarka plików graficznych dla X Window
+Comment=Very fast image viewer for X Window System
+Comment[pl]=Bardzo szybka przeglądarka plików graficznych dla Systemu X Window
 Exec=qiv %F
 Icon=qiv.png
 Terminal=0
