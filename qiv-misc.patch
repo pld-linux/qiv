@@ -1,9 +1,9 @@
-diff -Nru qiv-1.5/Makefile qiv-1.5.new/Makefile
---- qiv-1.5/Makefile	Fri Jul 28 10:33:48 2000
-+++ qiv-1.5.new/Makefile	Mon Nov  6 13:15:21 2000
-@@ -4,8 +4,10 @@
+diff -Nur qiv-1.7.orig/Makefile qiv-1.7/Makefile
+--- qiv-1.7.orig/Makefile	Sun Jun 10 14:35:06 2001
++++ qiv-1.7/Makefile	Sun Aug  5 04:47:56 2001
+@@ -3,8 +3,10 @@
+ # User Options
  ######################################################################
- 
  
 -# Directory where qiv will be installed under.
 +# Directories where qiv will be installed under.
@@ -11,9 +11,9 @@ diff -Nru qiv-1.5/Makefile qiv-1.5.new/Makefile
 +BINDIR = $(PREFIX)/bin
 +MANDIR = $(PREFIX)/man
  
- # Should image be centered on screen by default? 1=yes, 0=no.
- CENTER = 1
-@@ -56,7 +58,8 @@
+ # Font to use for statusbar in fullscreen mode
+ STATUSBAR_FONT = "fixed"
+@@ -54,7 +56,8 @@
  ######################################################################
  
  CC        = gcc
@@ -21,20 +21,19 @@ diff -Nru qiv-1.5/Makefile qiv-1.5.new/Makefile
 +OPTS      = -O2	 
 +CFLAGS    = $(OPT) -Wall -fomit-frame-pointer -finline-functions \
  	    -fcaller-saves -ffast-math -fno-strength-reduce \
- 	    -fthread-jumps  \
- 	    #-mcpu=pentium
-@@ -115,14 +118,9 @@
+ 	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
+ 
+@@ -112,13 +115,9 @@
+ 
  install: $(PROGRAM)
- 	@echo
  	@echo "Installing..."
 -	install -s -m 0755 $(PROGRAM) $(PREFIX)/bin
 -	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
--	gzip -f $(PREFIX)/man/man1/$(PROGRAM).1
+-	$(COMPRESS_PROG) $(PREFIX)/man/man1/$(PROGRAM).1
 -	@if ./qiv -o white -f ./intro.jpg ; \
 -	then echo "-- Test Passed --" ; \
 -	else echo "-- Test Failed --" ; \
 -	fi
--	@echo
 +	install -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
 +	install -s -m 0755 $(PROGRAM) $(DESTDIR)$(BINDIR)
 +	install -m 0644 $(PROGRAM).1 $(DESTDIR)$(MANDIR)/man1
