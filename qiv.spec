@@ -41,7 +41,7 @@ GDK/Imlib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
