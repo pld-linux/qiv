@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
+# Source0-md5: 78b62a3419d47b4f4c17df647a4f8abb
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-misc.patch
