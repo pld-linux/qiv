@@ -1,42 +1,38 @@
-diff -Nur qiv-1.7.orig/Makefile qiv-1.7/Makefile
---- qiv-1.7.orig/Makefile	Sun Jun 10 14:35:06 2001
-+++ qiv-1.7/Makefile	Sun Aug  5 04:47:56 2001
-@@ -3,8 +3,10 @@
- # User Options
- ######################################################################
+--- qiv-2.0.orig/Makefile	2004-05-22 09:21:47.000000000 +0200
++++ qiv-2.0/Makefile	2004-08-30 23:24:39.465273984 +0200
+@@ -5,6 +5,8 @@
  
--# Directory where qiv will be installed under.
-+# Directories where qiv will be installed under.
+ # Directory where qiv will be installed under.
  PREFIX = /usr/local
 +BINDIR = $(PREFIX)/bin
 +MANDIR = $(PREFIX)/man
  
  # Font to use for statusbar in fullscreen mode
  STATUSBAR_FONT = "fixed"
-@@ -54,7 +56,8 @@
+@@ -58,7 +60,8 @@
  ######################################################################
  
  CC        = gcc
 -CFLAGS    = -O2 -Wall -fomit-frame-pointer -finline-functions \
-+OPTS      = -O2	 
++OPTS      = -O2
 +CFLAGS    = $(OPT) -Wall -fomit-frame-pointer -finline-functions \
  	    -fcaller-saves -ffast-math -fno-strength-reduce \
  	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
  
-@@ -112,13 +115,9 @@
+@@ -124,13 +127,9 @@
  
  install: $(PROGRAM)
- 	@echo "Installing..."
+ 	@echo "Installing QIV..."
 -	install -s -m 0755 $(PROGRAM) $(PREFIX)/bin
 -	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
 -	$(COMPRESS_PROG) $(PREFIX)/man/man1/$(PROGRAM).1
--	@if ./qiv -o white -f ./intro.jpg ; \
+-	@if ./qiv -f ./intro.jpg ; \
 -	then echo "-- Test Passed --" ; \
 -	else echo "-- Test Failed --" ; \
 -	fi
 +	install -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
 +	install -s -m 0755 $(PROGRAM) $(DESTDIR)$(BINDIR)
 +	install -m 0644 $(PROGRAM).1 $(DESTDIR)$(MANDIR)/man1
+ 	@echo -ne "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example /usr/local/bin/qiv-command\n\n" 
  
  install-xscreensaver: install
- 	@echo "#!/bin/sh" > $(SS_PROG)
