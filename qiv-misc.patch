@@ -1,5 +1,6 @@
---- Makefile~	Thu Sep 23 12:28:53 1999
-+++ Makefile	Fri Sep 24 23:39:08 1999
+diff -Nru qiv-1.3/Makefile qiv-1.3.new/Makefile
+--- qiv-1.3/Makefile	Tue Feb 15 16:19:51 2000
++++ qiv-1.3.new/Makefile	Wed May 17 21:25:27 2000
 @@ -4,8 +4,10 @@
  ######################################################################
  
@@ -12,7 +13,7 @@
  
  # Should image be centered on screen by default? 1=yes, 0=no.
  CENTER = 1
-@@ -51,7 +53,8 @@
+@@ -55,7 +57,8 @@
  ######################################################################
  
  CC        = gcc
@@ -22,7 +23,7 @@
  	    -fcaller-saves -ffast-math -fno-strength-reduce \
  	    -fthread-jumps
  
-@@ -103,13 +106,13 @@
+@@ -108,13 +111,13 @@
  	rm -f $(PROGRAM) $(PROGRAM_G) $(OBJS) $(OBJS_G) getopt.o getopt1.o
  
  install: $(PROGRAM)
@@ -43,10 +44,3 @@
  
  install-xscreensaver: install
  	@echo "#!/bin/sh" > $(SS_PROG)
-@@ -122,4 +125,4 @@
- 	echo "Start screensaver with ss-qiv"
- 
- 
--# the end... ;-)
-\ No newline at end of file
-+# the end... ;-)
