@@ -1,6 +1,6 @@
-diff -Nru qiv-1.3/Makefile qiv-1.3.new/Makefile
---- qiv-1.3/Makefile	Tue Feb 15 16:19:51 2000
-+++ qiv-1.3.new/Makefile	Wed May 17 21:25:27 2000
+diff -Nru qiv-1.5/Makefile qiv-1.5.new/Makefile
+--- qiv-1.5/Makefile	Fri Jul 28 10:33:48 2000
++++ qiv-1.5.new/Makefile	Mon Nov  6 13:15:21 2000
 @@ -4,8 +4,10 @@
  ######################################################################
  
@@ -13,20 +13,20 @@ diff -Nru qiv-1.3/Makefile qiv-1.3.new/Makefile
  
  # Should image be centered on screen by default? 1=yes, 0=no.
  CENTER = 1
-@@ -55,7 +57,8 @@
+@@ -56,7 +58,8 @@
  ######################################################################
  
  CC        = gcc
--CFLAGS    = -O2 -Wall -s -fomit-frame-pointer -finline-functions \
-+OPTS      = -O2
-+CFLAGS    = $(OPTS) -Wall -s -fomit-frame-pointer -finline-functions \
+-CFLAGS    = -O2 -Wall -fomit-frame-pointer -finline-functions \
++OPTS      = -O2	 
++CFLAGS    = $(OPT) -Wall -fomit-frame-pointer -finline-functions \
  	    -fcaller-saves -ffast-math -fno-strength-reduce \
- 	    -fthread-jumps
- 
-@@ -108,13 +111,13 @@
- 	rm -f $(PROGRAM) $(PROGRAM_G) $(OBJS) $(OBJS_G) getopt.o getopt1.o
- 
+ 	    -fthread-jumps  \
+ 	    #-mcpu=pentium
+@@ -115,14 +118,9 @@
  install: $(PROGRAM)
+ 	@echo
+ 	@echo "Installing..."
 -	install -s -m 0755 $(PROGRAM) $(PREFIX)/bin
 -	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
 -	gzip -f $(PREFIX)/man/man1/$(PROGRAM).1
@@ -34,13 +34,10 @@ diff -Nru qiv-1.3/Makefile qiv-1.3.new/Makefile
 -	then echo "-- Test Passed --" ; \
 -	else echo "-- Test Failed --" ; \
 -	fi
+-	@echo
++	install -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
 +	install -s -m 0755 $(PROGRAM) $(DESTDIR)$(BINDIR)
 +	install -m 0644 $(PROGRAM).1 $(DESTDIR)$(MANDIR)/man1
-+	gzip -f $(DESTDIR)$(MANDIR)/man1/$(PROGRAM).1
-+#	@if ./qiv -o white -f ./intro.jpg ; \
-+#	then echo "-- Test Passed --" ; \
-+#	else echo "-- Test Failed --" ; \
-+#	fi
  
  install-xscreensaver: install
  	@echo "#!/bin/sh" > $(SS_PROG)
