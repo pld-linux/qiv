@@ -15,7 +15,6 @@ BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 Quick Image Viewer (qiv) is a very small and pretty fast GDK/Imlib
 image viewer. Features include zoom, maxpect, scale down, fullscreen,
@@ -38,14 +37,14 @@ GDK/Imlib.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 
@@ -57,5 +56,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc README README.CHANGES README.TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
-%{_applnkdir}/Graphics/Viewers/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
