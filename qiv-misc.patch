@@ -1,0 +1,46 @@
+--- Makefile~	Tue May 11 21:55:11 1999
++++ Makefile	Thu May 20 13:07:10 1999
+@@ -3,9 +3,11 @@
+ # User Options
+ ######################################################################
+ 
+-# Directory where qiv will be installed under.
++# Directories where qiv will be installed under.
+ 
+ PREFIX = /usr/local
++BINDIR = $(PREFIX)/bin
++MANDIR = $(PREFIX)/man
+ 
+ # Should image be centered on screen by default? 1=yes, 0=no.
+ 
+@@ -60,7 +62,8 @@
+ ######################################################################
+ 
+ CC        = gcc
+-CFLAGS    = -O2 -Wall -s -fomit-frame-pointer -finline-functions \
++OPTS	  = -O2
++CFLAGS    = $(OPTS) -Wall -s -fomit-frame-pointer -finline-functions \
+ 	    -fcaller-saves -ffast-math -fno-strength-reduce \
+ 	    -fthread-jumps
+ 
+@@ -112,13 +115,13 @@
+ 	rm -f $(PROGRAM) $(PROGRAM_G) $(OBJS) $(OBJS_G) getopt.o getopt1.o
+ 
+ install: $(PROGRAM)
+-	install -s -m 0755 $(PROGRAM) $(PREFIX)/bin
+-	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
+-	gzip $(PREFIX)/man/man1/$(PROGRAM).1
+-	@if ./qiv -o white -f ./intro.jpg ; \
+-	then echo "-- Test Passed --" ; \
+-	else echo "-- Test Failed --" ; \
+-	fi
++	install -s -m 0755 $(PROGRAM) $(DESTDIR)$(BINDIR)
++	install -m 0644 $(PROGRAM).1 $(DESTDIR)$(MANDIR)/man1
++	gzip $(DESTDIR)$(MANDIR)/man1/$(PROGRAM).1
++#	@if ./qiv -o white -f ./intro.jpg ; \
++#	then echo "-- Test Passed --" ; \
++#	else echo "-- Test Failed --" ; \
++#	fi
+ 
+ install-xscreensaver: install
+ 	@echo "#!/bin/sh" > $(SS_PROG)
