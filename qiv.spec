@@ -33,13 +33,13 @@ GDK/Imlib.
 %patch -p1
 
 %build
-make OPTS="$RPM_OPT_FLAGS"
+%{__make} OPTS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-make install DESTDIR=$RPM_BUILD_ROOT \
+%{__make} install DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
 
