@@ -48,8 +48,8 @@ install -d RPM_BUILD_ROOT{%{_applnkdir}/Graphics/Viewers,%{_pixmapsdir}}
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}
 
-install %{SOURCE1} RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
-install %{SOURCE2} RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics/Viewers
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 gzip -9nf README README.CHANGES README.TODO
 
