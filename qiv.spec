@@ -33,7 +33,9 @@ GDK/Imlib.
 %patch -p1
 
 %build
-%{__make} OPTS="%{rpmcflags}"
+%{__make} \
+	CC="%{__cc}" \
+	OPTS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
