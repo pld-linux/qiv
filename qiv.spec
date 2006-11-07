@@ -58,5 +58,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc README README.CHANGES README.TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
