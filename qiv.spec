@@ -1,5 +1,5 @@
 Summary:	Very fast image viewer for X Window
-Summary(pl):	Bardzo szybka przegl±darka plików graficznych dla X Window
+Summary(pl.UTF-8):   Bardzo szybka przeglÄ…darka plikÃ³w graficznych dla X Window
 Name:		qiv
 Version:	2.0
 Release:	1
@@ -23,9 +23,9 @@ horizontal/vertical, rotate left/right, delete (move to .qiv-trash/),
 jump to image x, jump forward/backward x images, filename filer and
 you can use qiv to set your X11-Desktop background.
 
-%description -l pl
-Quick Image Viewer (qiv) jest bardzo ma³ym i ca³kiem szybkim programem
-do przegl±dania plików graficznych, wykorzystuj±cym biblioteki
+%description -l pl.UTF-8
+Quick Image Viewer (qiv) jest bardzo maÅ‚ym i caÅ‚kiem szybkim programem
+do przeglÄ…dania plikÃ³w graficznych, wykorzystujÄ…cym biblioteki
 GDK/Imlib.
 
 %prep
