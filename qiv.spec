@@ -1,5 +1,5 @@
 Summary:	Very fast image viewer for X Window
-Summary(pl.UTF-8):   Bardzo szybka przeglądarka plików graficznych dla X Window
+Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
 Version:	2.0
 Release:	1
