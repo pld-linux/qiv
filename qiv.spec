@@ -1,12 +1,12 @@
 Summary:	Very fast image viewer for X Window
 Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
-Version:	2.0
-Release:	1
+Version:	2.1
+Release:	0.pre12
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-src.tgz
-# Source0-md5:	165d0c2f264718821f94732196b7f9e1
+Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-pre12.tgz
+# Source0-md5:	80ba1e2da5115a3cc3a6f7e19cb620d8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-misc.patch
@@ -29,7 +29,7 @@ do przeglądania plików graficznych, wykorzystującym biblioteki
 GDK/Imlib.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-pre12
 %patch0 -p1
 
 %build
@@ -49,13 +49,12 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README README.CHANGES README.TODO
+%doc Changelog README README.TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
 %{_desktopdir}/*.desktop
