@@ -13,6 +13,7 @@ Patch0:		%{name}-misc.patch
 URL:		http://www.klografx.net/qiv/
 BuildRequires:	gtk+-devel
 BuildRequires:	imlib-devel
+BuildRequires:	xorg-lib-libXinerama-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
