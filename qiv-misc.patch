@@ -1,5 +1,5 @@
---- qiv-2.0.orig/Makefile	2004-05-22 09:21:47.000000000 +0200
-+++ qiv-2.0/Makefile	2004-08-30 23:24:39.465273984 +0200
+--- qiv-2.2.4/Makefile.orig	2012-02-22 10:53:37.202184976 +0100
++++ qiv-2.2.4/Makefile	2012-02-22 10:59:40.160218664 +0100
 @@ -5,6 +5,8 @@
  
  # Directory where qiv will be installed under.
@@ -9,21 +9,39 @@
  
  # Font to use for statusbar in fullscreen mode
  STATUSBAR_FONT = "fixed"
-@@ -58,7 +60,8 @@
- ######################################################################
+@@ -47,7 +49,8 @@ MAGIC = -DHAVE_MAGIC
  
  CC        = gcc
+ #CFLAGS    = -O -g -Wall
 -CFLAGS    = -O2 -Wall \
 +OPTS      = -O2
 +CFLAGS    = $(OPTS) -Wall \
  	    -fcaller-saves -ffast-math -fno-strength-reduce \
  	    -fthread-jumps #-march=pentium #-DSTAT_MACROS_BROKEN
  #CFLAGS    = -O2 -Wall -fomit-frame-pointer -finline-functions \
-@@ -124,13 +127,9 @@
+@@ -83,7 +86,8 @@ OBJS_G   += lib/getopt.g lib/getopt1.g
+ endif
+ 
+ ifdef GTD_XINERAMA
+-LIBS     += -L/usr/X11R6/lib -lXinerama
++INCLUDES += $(shell pkg-config --cflags xinerama)
++LIBS     += $(shell pkg-config --libs xinerama)
+ endif
+ 
+ ifdef MAGIC
+@@ -127,21 +131,9 @@ distclean : clean
  
  install: $(PROGRAM)
  	@echo "Installing QIV..."
+-	@if [ ! -e $(PREFIX)/bin ]; then \
+-	  install -d -m 0755 $(PREFIX)/bin; \
+-	  echo install -d -m 0755 $(PREFIX)/bin; \
+-        fi
 -	install -s -m 0755 $(PROGRAM) $(PREFIX)/bin
+-	@if [ ! -e $(PREFIX)/man/man1 ]; then \
+-	  echo install -d -m 0755 $(PREFIX)/man/man1; \
+-	  install -d -m 0755 $(PREFIX)/man/man1; \
+-	fi
 -	install -m 0644 $(PROGRAM).1 $(PREFIX)/man/man1
 -	$(COMPRESS_PROG) $(PREFIX)/man/man1/$(PROGRAM).1
 -	@if ./qiv -f ./intro.jpg ; \
@@ -33,7 +51,6 @@
 +	install -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)/man1
 +	install -s -m 0755 $(PROGRAM) $(DESTDIR)$(BINDIR)
 +	install -m 0644 $(PROGRAM).1 $(DESTDIR)$(MANDIR)/man1
- 	@echo -ne "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example /usr/local/bin/qiv-command\n\n" 
+ 	@echo "\nDont forget to look into the \"qiv-command\" file and install it!\n-> cp qiv-command.example /usr/local/bin/qiv-command\n\n"
  
- install-xscreensaver: install
-
+ # the end... ;-)

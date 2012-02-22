@@ -1,18 +1,20 @@
 Summary:	Very fast image viewer for X Window
 Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
-Version:	2.1
-Release:	0.pre12
+Version:	2.2.4
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	http://www.klografx.net/qiv/download/%{name}-%{version}-pre12.tgz
-# Source0-md5:	80ba1e2da5115a3cc3a6f7e19cb620d8
+Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
+# Source0-md5:	1425f89c90f9c045858fccf24d894c97
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-misc.patch
-URL:		http://www.klografx.net/qiv/
-BuildRequires:	gtk+-devel
-BuildRequires:	imlib-devel
+URL:		http://spiegl.de/qiv/
+BuildRequires:	gtk+2-devel
+BuildRequires:	imlib2-devel
+BuildRequires:	libmagic-devel
+BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXinerama-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,7 +32,7 @@ do przeglądania plików graficznych, wykorzystującym biblioteki
 GDK/Imlib.
 
 %prep
-%setup -q -n %{name}-%{version}-pre12
+%setup -q
 %patch0 -p1
 
 %build
