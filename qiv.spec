@@ -2,7 +2,7 @@ Summary:	Very fast image viewer for X Window
 Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
 Version:	2.3.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
@@ -34,6 +34,7 @@ GDK/Imlib.
 
 %prep
 %setup -q
+%{__sed} -e 's|q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, 24);|q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, gdk_drawable_get_depth(q->win));|' -i image.c
 
 %build
 %{__make} \
