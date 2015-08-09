@@ -1,21 +1,23 @@
 Summary:	Very fast image viewer for X Window
 Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
-Version:	2.2.4
+Version:	2.3.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
-# Source0-md5:	1425f89c90f9c045858fccf24d894c97
+# Source0-md5:	93aea7469be64ebd35277a6dac079fc8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-misc.patch
 URL:		http://spiegl.de/qiv/
 BuildRequires:	gtk+2-devel
 BuildRequires:	imlib2-devel
+BuildRequires:	lcms2-devel
+BuildRequires:	libexif-devel
 BuildRequires:	libmagic-devel
 BuildRequires:	pkgconfig
-BuildRequires:	xorg-lib-libXinerama-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,7 +40,7 @@ GDK/Imlib.
 %build
 %{__make} \
 	CC="%{__cc}" \
-	OPTS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -60,5 +62,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changelog README README.TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_desktopdir}/%{name}.desktop
+%{_pixmapsdir}/%{name}.png
