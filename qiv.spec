@@ -9,7 +9,6 @@ Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
 # Source0-md5:	93aea7469be64ebd35277a6dac079fc8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-misc.patch
 URL:		http://spiegl.de/qiv/
 BuildRequires:	gtk+2-devel
 BuildRequires:	imlib2-devel
@@ -35,21 +34,18 @@ GDK/Imlib.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcflags} -Wall -fcaller-saves -ffast-math -fno-strength-reduce -fthread-jumps"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_desktopdir},%{_pixmapsdir}}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	BINDIR=%{_bindir} \
-	MANDIR=%{_mandir}
+install %{name} $RPM_BUILD_ROOT%{_bindir}
+install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -61,6 +57,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changelog README README.TODO
 %attr(755,root,root) %{_bindir}/%{name}
-%{_mandir}/man1/*
+%{_mandir}/man1/%{name}.1*
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.png
