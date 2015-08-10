@@ -1,0 +1,11 @@
+--- qiv-2.3.1/image.c~	2013-12-20 02:50:37.000000000 +0200
++++ qiv-2.3.1/image.c	2015-08-10 09:48:57.192314422 +0300
+@@ -735,7 +735,7 @@
+             (before.tv_sec + before.tv_usec / 1.0e6));
+ 
+         /*TODO: Hier gibt es XID collision, wenn am Bild eigentlich nix geändert wurde*/
+-        q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, 24);
++        q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, gdk_drawable_get_depth(q->win));
+         gdk_drawable_set_colormap(GDK_DRAWABLE(q->p),
+             gdk_drawable_get_colormap(GDK_DRAWABLE(q->win)));
+ //        m = x_mask == None ? NULL : gdk_pixmap_foreign_new(x_mask);

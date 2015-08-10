@@ -9,6 +9,7 @@ Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
 # Source0-md5:	93aea7469be64ebd35277a6dac079fc8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		non-24bit.patch
 URL:		http://spiegl.de/qiv/
 BuildRequires:	gtk+2-devel
 BuildRequires:	imlib2-devel
@@ -35,7 +36,7 @@ GDK/Imlib.
 
 %prep
 %setup -q
-%{__sed} -e 's|q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, 24);|q->p = gdk_pixmap_foreign_new_for_screen(screen, x_pixmap, q->win_w, q->win_h, gdk_drawable_get_depth(q->win));|' -i image.c
+%patch0 -p1
 
 %build
 %{__make} \
