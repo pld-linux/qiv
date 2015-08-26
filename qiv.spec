@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Bardzo szybka przeglądarka plików graficznych dla X Window
 Name:		qiv
 Version:	2.3.1
 Release:	3
-License:	GPL
+License:	GPL v2
 Group:		X11/Applications/Graphics
 Source0:	http://spiegl.de/qiv/download/%{name}-%{version}.tgz
 # Source0-md5:	93aea7469be64ebd35277a6dac079fc8
